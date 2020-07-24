@@ -1,4 +1,5 @@
 import argparse
+import csv
 import logging
 
 from tqdm import tqdm
@@ -30,7 +31,8 @@ def main():
     args = parser.parse_args()
 
     with open(args.file) as file_:
-        cards = list(load_cards(args.card_type, file_))
+        reader = csv.reader(file_)
+        cards = list(load_cards(args.card_type, reader))
         logger.info(f"Read {len(cards)} card(s)")
 
     client = Client(args.username, args.password)
@@ -50,8 +52,8 @@ def main():
 
 
 def load_cards(card_type, file_):
-    for line in file_:
-        yield Card(type=card_type, content=line.strip())
+    for row in file_:
+        yield Card(type=card_type, content=row[0].strip())
 
 
 if __name__ == "__main__":
