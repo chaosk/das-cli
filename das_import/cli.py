@@ -53,7 +53,7 @@ def main():
 
 def load_cards(card_type, file_):
     for row in file_:
-        yield Card(type=card_type, content=row[0].strip())
+        yield Card(type=card_type, content=",".join(row).strip())
 
 
 if __name__ == "__main__":

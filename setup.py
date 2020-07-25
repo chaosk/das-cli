@@ -7,7 +7,7 @@ setup(
     name="das-import",
     packages=find_packages(),
     include_package_data=True,
-    version="0.1.1",
+    version="0.1.2",
     description="Decks Against Society card importer",
     long_description=(ROOT_DIR / "README.md").read_text(),
     long_description_content_type="text/markdown",
